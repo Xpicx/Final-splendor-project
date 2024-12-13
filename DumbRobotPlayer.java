@@ -28,8 +28,8 @@ public class DumbRobotPlayer extends Player
             if (board.getNbResource(resource) >= 4 && tokensToBuy.size() <= 3) {
                 tokensToBuy.add(resource);
             }
-            PickDiffTokensAction psta = new PickDiffTokensAction(tokensToBuy.get(0), tokensToBuy.get(1), tokensToBuy.get(2));
-            return psta;
+            PickDiffTokensAction pdta = new PickDiffTokensAction(tokensToBuy);
+            return pdta;
         }
         PassAction pa = new PassAction();
         return pa;        
@@ -57,6 +57,6 @@ public class DumbRobotPlayer extends Player
             }
             super.updateNbResource(tokensToDiscard, -1);
         }
-        return super.getAvailableResources();
+        return tokensToDiscard;
     }
 }
