@@ -80,7 +80,8 @@ public class Game {
     }
 
     private void move(Player player){
-        player.chooseAction(board);
+        Action action=player.chooseAction(board);
+        action.process(player,board);
     }
 
     private void discardToken(Player player){
