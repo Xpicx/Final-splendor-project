@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=PickDiffTokensAction
+comment1.params=type1\ type2\ type3
+comment1.target=PickDiffTokensAction(Resource,\ Resource,\ Resource)
+comment1.text=\r\n\ Constructeur\ d'objets\ de\ classe\ PickDiffTokensAction\r\n
+comment2.params=joueur\ plateau
+comment2.target=void\ process(Player,\ Board)
+comment3.params=
+comment3.target=java.lang.String\ toString()
+numComments=4

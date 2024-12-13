@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=PassAction
+comment1.params=joueur\ board
+comment1.target=void\ process(Player,\ Board)
+comment2.params=
+comment2.target=java.lang.String\ toString()
+numComments=3

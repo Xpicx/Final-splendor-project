@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=PickSameTokensAction
+comment0.text=\r\n\ D\u00E9crivez\ votre\ classe\ PickSameTokensAction\ ici.\r\n\r\n\ @author\ (votre\ nom)\r\n\ @version\ (un\ num\u00E9ro\ de\ version\ ou\ une\ date)\r\n
+comment1.params=type
+comment1.target=PickSameTokensAction(Resource)
+comment1.text=\r\n\ Constructeur\ d'objets\ de\ classe\ PickSameTokensAction\r\n
+comment2.params=joueur\ plateau
+comment2.target=void\ process(Player,\ Board)
+comment3.params=
+comment3.target=java.lang.String\ toString()
+numComments=4

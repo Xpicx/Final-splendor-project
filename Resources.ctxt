@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=Resources
+comment1.params=
+comment1.target=Resources()
+comment1.text=\r\n\ Constructeur\ qui\ initialise\ toutes\ les\ ressources\ \u00E0\ 0.\r\n
+comment2.params=coutDiamond\ coutSapphire\ coutEmerald\ coutRuby\ coutOnyx
+comment2.target=Resources(int,\ int,\ int,\ int,\ int)
+comment2.text=\r\n\ Constructeur\ qui\ initialise\ toutes\ les\ ressources\ \u00E0\ partir\ de\ valeurs\ donn\u00E9es.\r\n
+comment3.params=resource
+comment3.target=int\ getNbResource(Resource)
+comment3.text=\r\n\ Renvoie\ la\ quantit\u00E9\ d'un\ type\ de\ ressource.\r\n
+comment4.params=resource\ quantity
+comment4.target=void\ setNbResource(Resource,\ int)
+comment4.text=\r\n\ Change\ la\ valeur\ d'une\ ressource\ pass\u00E9e\ en\ param\u00E8tre\ par\ un\ entier\ positif\ ou\ nul.\r\n
+comment5.params=resource\ quantity
+comment5.target=void\ updateNbResource(Resource,\ int)
+comment5.text=\r\n\ Met\ \u00E0\ jour\ une\ ressource\ pass\u00E9e\ en\ param\u00E8tre\ avec\ une\ quantit\u00E9\ donn\u00E9e.\r\n\ La\ valeur\ reste\ non\ n\u00E9gative.\r\n
+comment6.params=
+comment6.target=java.util.ArrayList\ getAvailableResources()
+comment6.text=\r\n\ Renvoie\ une\ liste\ des\ ressources\ pour\ lesquelles\ la\ quantit\u00E9\ est\ sup\u00E9rieure\ \u00E0\ z\u00E9ro.\r\n
+numComments=7

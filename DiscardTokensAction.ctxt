@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=DiscardTokensAction
+comment0.text=\r\n\ D\u00E9crivez\ votre\ classe\ DiscardTokensAction\ ici.\r\n\r\n\ @author\ (votre\ nom)\r\n\ @version\ (un\ num\u00E9ro\ de\ version\ ou\ une\ date)\r\n
+comment1.params=discardRessources
+comment1.target=DiscardTokensAction(Resources)
+comment2.params=joueur\ plateau
+comment2.target=void\ process(Player,\ Board)
+comment3.params=
+comment3.target=java.lang.String\ toString()
+numComments=4

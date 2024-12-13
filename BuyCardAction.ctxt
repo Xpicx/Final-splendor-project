@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=BuyCardAction
+comment1.params=carte
+comment1.target=BuyCardAction(DevCard)
+comment2.params=joueur\ plateau
+comment2.target=void\ process(Player,\ Board)
+comment3.params=
+comment3.target=java.lang.String\ toString()
+numComments=4
