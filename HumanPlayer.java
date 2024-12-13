@@ -43,7 +43,7 @@ public class HumanPlayer extends Player
                     choixResources.add(Resource.valueOf(choixRessource));
                 }
             }
-            result = new PickDiffTokensAction(choixResources.get(0), choixResources.get(1),choixResources.get(2));
+            result = new PickDiffTokensAction(choixResources);
         }
         
         if(choix==3){
