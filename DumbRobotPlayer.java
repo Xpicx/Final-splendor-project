@@ -36,26 +36,25 @@ public class DumbRobotPlayer extends Player
     }
     
     public Resources chooseDiscardingTokens(){
-        Resource tokensToDiscard = null;
+        Resources tokensToDiscard = null;
         while(super.getNbTokens()> 10){
             Random random = new Random();
             int rdm = random.nextInt(5);
             if(rdm==0 && super.getNbResource(Resource.DIAMOND) > 0){
-                tokensToDiscard = Resource.DIAMOND;
+                tokensToDiscard.updateNbResource(Resource.DIAMOND,1);
             }
             if(rdm==1 && super.getNbResource(Resource.SAPPHIRE) > 0){
-                tokensToDiscard = Resource.SAPPHIRE;
+                tokensToDiscard.updateNbResource(Resource.SAPPHIRE,1);
             }
             if(rdm==2 && super.getNbResource(Resource.EMERALD) > 0){
-                tokensToDiscard = Resource.EMERALD;
+                tokensToDiscard.updateNbResource(Resource.EMERALD,1);
             }
             if(rdm==3 && super.getNbResource(Resource.RUBY) > 0){
-                tokensToDiscard = Resource.RUBY;
+                tokensToDiscard.updateNbResource(Resource.RUBY,1);
             }
             if(rdm==4 && super.getNbResource(Resource.ONYX) > 0){
-                tokensToDiscard = Resource.ONYX;
+                tokensToDiscard.updateNbResource(Resource.ONYX,1);
             }
-            super.updateNbResource(tokensToDiscard, -1);
         }
         return tokensToDiscard;
     }
