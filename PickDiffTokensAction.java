@@ -1,29 +1,26 @@
+import java.util.ArrayList;
 public class PickDiffTokensAction implements Action {
-    private Resource type1;
-    private Resource type2;
-    private Resource type3;
-
+    private ArrayList<Resource> resourcesToTake;
+    
     /**
-     * Constructeur d'objets de classe PickDiffTokensAction
+     * Constructeur d'objets de classe PickDiffTokensAction 
      */
-    public PickDiffTokensAction(Resource type1,Resource type2,Resource type3)
-    {
-        this.type1=type1;
-        this.type2=type2;
-        this.type3=type3;
+    public PickDiffTokensAction(ArrayList<Resource> resourcesToTake) {
+        this.resourcesToTake = resourcesToTake;
     }
 
     public void process(Player joueur,Board plateau){
-        plateau.updateNbResource(type1,-1);
-        joueur.updateNbResource(type1,1);
-        plateau.updateNbResource(type2,-1);
-        joueur.updateNbResource(type2,1);
-        plateau.updateNbResource(type3,-1);
-        joueur.updateNbResource(type3,1);
-        
+        for (Resource resource : resourcesToTake) {
+            plateau.updateNbResource(resource, -1);
+            joueur.updateNbResource(resource, 1);
+        }
     }
     
     public String toString(){
-        return "Vous avez pris: 1"+type1+", 1"+type2+", 1"+type3+". ";
+        String result = "Vous avez pris: 1 ";
+        for (Resource resource : resourcesToTake) {
+            result += resource.toSymbol();
+        }
+        return result;
     }
 }
