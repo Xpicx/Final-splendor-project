@@ -45,6 +45,7 @@ public class Game {
                 players.add(robot);
             }
         }
+        play();
     }
 
     public int getNbPlayers(){
