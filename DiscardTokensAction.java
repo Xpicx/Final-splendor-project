@@ -16,6 +16,7 @@ public class DiscardTokensAction implements Action
     public void process(Player joueur,Board plateau){
         for (Resource resource : Resource.values()) {
             joueur.updateNbResource(resource, -discardRessources.getNbResource(resource));
+            plateau.updateNbResource(resource, discardRessources.getNbResource(resource));
         }
     }
     
