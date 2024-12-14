@@ -24,11 +24,28 @@ public class HumanPlayer extends Player
         }
         
         if (choix == 1) {
-            Game.display.out.println("Veuiller entrer un type de ressource");
+            Game.display.out.println("Veuillez entrer un type de ressource :");
+            Game.display.out.println("Entrer D pour prendre 2 DIAMOND");
+            Game.display.out.println("Entrer S pour prendre 2 SAPPHIRE");
+            Game.display.out.println("Entrer E pour prendre 2 EMERALD");
+            Game.display.out.println("Entrer O pour prendre 2 ONYX");
+            Game.display.out.println("Entrer R pour prendre 2 RUBY");
             String choixRessource = scanner.nextLine();
-            while(choixRessource.equals("DIAMOND") && choixRessource.equals("SAPPHIRE") && choixRessource.equals("EMERALD") && choixRessource.equals("RUBY") && choixRessource.equals("ONYX") ){
-                Game.display.out.println("Veuiller choisir un type de ressource");
-                choix=scanner.nextInt();
+            
+            if(choixRessource.equals("D")){
+                result = new PickSameTokensAction(Resource.valueOf("DIAMOND"));
+            }
+            if(choixRessource.equals("S")){
+                result = new PickSameTokensAction(Resource.valueOf("SAPPHIRE"));
+            }
+            if(choixRessource.equals("E")){
+                result = new PickSameTokensAction(Resource.valueOf("EMERALD"));
+            }
+            if(choixRessource.equals("O")){
+                result = new PickSameTokensAction(Resource.valueOf("ONYX"));
+            }
+            if(choixRessource.equals("R")){
+                result = new PickSameTokensAction(Resource.valueOf("RUBY"));
             }
             result = new PickSameTokensAction(Resource.valueOf(choixRessource));
         }
