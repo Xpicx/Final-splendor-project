@@ -1,7 +1,8 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 
-public class HumanPlayer extends Player {
+public class HumanPlayer extends Player
+{
     public HumanPlayer(int id, String name){
         super(id,name);
     }
@@ -113,9 +114,11 @@ public class HumanPlayer extends Player {
                     if (scanner.hasNextInt()) {
                         positionY = scanner.nextInt();
                         scanner.nextLine();
-                        if (board.getCard(positionX, positionY) != null) {
+                        if (board.getCard(positionX, positionY) != null && canBuyCard(board.getCard(positionX, positionY))) {
                             result = new BuyCardAction(board.getCard(positionX, positionY));
                             positionValide = true;
+                        } else if (!canBuyCard(board.getCard(positionX, positionY))) {
+                            Game.display.out.println("Vous n'avez pas assez de ressources pour acheter cette carte.");
                         } else {
                             Game.display.out.println("Aucune carte n'existe à cette position. Réessayez.");
                         }
