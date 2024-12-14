@@ -40,7 +40,7 @@ public class Game {
         HumanPlayer human=new HumanPlayer(1,"Humain");
         players.add(human);
         //Créer un nombre n de robot en fonction du nombre de joueur
-        for (int i = 0; i <= nbOfPlayers-1; i++){
+        for (int i = 0; i < nbOfPlayers-1; i++){
             DumbRobotPlayer robot=new DumbRobotPlayer(i,"Robot"+i); 
             players.add(robot);
         }
