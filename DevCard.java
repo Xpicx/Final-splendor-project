@@ -21,9 +21,11 @@ public class DevCard implements Displayable {
     /**
      * Renvoie le cout de la carte (un objet Resource)
      */
+    
     public Resources getCost(){
         return cost;
     }
+    
     /**
      * Renvoie les points que rapporte la carte.
      */
@@ -34,10 +36,10 @@ public class DevCard implements Displayable {
     /**
      * Renvoie type de la carte (la ressource 
      */
+    
     public Resource getResourceType(){
         return resourceType;
     }
-    
     
     public String[] toStringArray(){
         /** EXAMPLE
