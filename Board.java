@@ -59,13 +59,13 @@ public class Board implements Displayable {
         for (int i=0;i<98;i++) {
             int index=rand.nextInt(pileCartes.size());
             if(pileCartes.get(index).getNiveau()==1){
-                stackCards.get(0).add(pileCartes.get(index));
+                stackCards.get(2).add(pileCartes.get(index));
             }
             if(pileCartes.get(index).getNiveau()==2){
                 stackCards.get(1).add(pileCartes.get(index));
             }
             if(pileCartes.get(index).getNiveau()==3){
-                stackCards.get(2).add(pileCartes.get(index));
+                stackCards.get(0).add(pileCartes.get(index));
             }          
         }
         }
