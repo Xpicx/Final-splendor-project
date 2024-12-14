@@ -1,8 +1,7 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 
-public class HumanPlayer extends Player
-{
+public class HumanPlayer extends Player {
     public HumanPlayer(int id, String name){
         super(id,name);
     }
@@ -13,67 +12,122 @@ public class HumanPlayer extends Player
         Game.display.out.println("Entrer 2 pour: Prendre trois jetons de ressources différentes");
         Game.display.out.println("Entrer 3 pour: Acheter une carte développement");
         Game.display.out.println("Entrer 4 pour: Passer votre tour");
-        Scanner scanner=new Scanner(Game.display.in);
-        int choix=scanner.nextInt(); //Lecture entrée clavier
+        Scanner scanner = new Scanner(Game.display.in);
+        int choix = scanner.nextInt(); //Lecture entrée clavier
+        scanner.nextLine();
         Action result = null;
         
         //Choix que peut faire le joueur
-        while (choix!=1 && choix!=2 && choix!=3 && choix!=4) {
+        while (choix < 1 || choix > 4) {
             Game.display.out.println("Choisir un chiffre entre 1 et 4");
+            choix = scanner.nextInt();
             scanner.nextLine();
-            choix=scanner.nextInt();
         }
         
         if (choix == 1) {
-            Game.display.out.println("Veuillez entrer un type de ressource :");
-            Game.display.out.println("Entrer D pour prendre 2 DIAMOND");
-            Game.display.out.println("Entrer S pour prendre 2 SAPPHIRE");
-            Game.display.out.println("Entrer E pour prendre 2 EMERALD");
-            Game.display.out.println("Entrer O pour prendre 2 ONYX");
-            Game.display.out.println("Entrer R pour prendre 2 RUBY");
-            scanner.nextLine();
-            String choixRessource = scanner.nextLine();
+            String choixRessource = "";
+            boolean choixFait = false;
             
-            if(choixRessource.equals("D")){
-                result = new PickSameTokensAction(Resource.valueOf("DIAMOND"));
+            while (!choixFait) {
+                Game.display.out.println("Veuillez entrer un type de ressource :");
+                Game.display.out.println("Entrez D pour prendre 2 DIAMOND");
+                Game.display.out.println("Entrez S pour prendre 2 SAPPHIRE");
+                Game.display.out.println("Entrez E pour prendre 2 EMERALD");
+                Game.display.out.println("Entrez O pour prendre 2 ONYX");
+                Game.display.out.println("Entrez R pour prendre 2 RUBY");
+
+                choixRessource = scanner.nextLine();
+            
+                if(choixRessource.equals("D")) {
+                    result = new PickSameTokensAction(Resource.valueOf("DIAMOND"));
+                    choixFait = true;
+                }
+                else if(choixRessource.equals("S")) {
+                    result = new PickSameTokensAction(Resource.valueOf("SAPPHIRE"));
+                    choixFait = true;
+                }
+                else if(choixRessource.equals("E")) {
+                    result = new PickSameTokensAction(Resource.valueOf("EMERALD"));
+                    choixFait = true;
+                }
+                else if(choixRessource.equals("O")) {
+                    result = new PickSameTokensAction(Resource.valueOf("ONYX"));
+                    choixFait = true;
+                }
+                else if(choixRessource.equals("R")) {
+                    result = new PickSameTokensAction(Resource.valueOf("RUBY"));
+                    choixFait = true;
+                }else {
+                    Game.display.out.println("Entrée invalide. Veuillez entrer une lettre valide.");
+                }
             }
-            if(choixRessource.equals("S")){
-                result = new PickSameTokensAction(Resource.valueOf("SAPPHIRE"));
-            }
-            if(choixRessource.equals("E")){
-                result = new PickSameTokensAction(Resource.valueOf("EMERALD"));
-            }
-            if(choixRessource.equals("O")){
-                result = new PickSameTokensAction(Resource.valueOf("ONYX"));
-            }
-            if(choixRessource.equals("R")){
-                result = new PickSameTokensAction(Resource.valueOf("RUBY"));
-            }
-            result = new PickSameTokensAction(Resource.valueOf(choixRessource));
         }
            
-        if(choix==2){
+        if (choix==2) {
             ArrayList<Resource> choixResources = new ArrayList<Resource>();
-            while (choixResources.size() < 4) { 
-                Game.display.out.println("Veuiller entrer 3 types de ressource :");
-                scanner.nextLine();
-                String choixRessource=scanner.nextLine();
-                while(choixRessource.equals("DIAMOND") && choixRessource.equals("SAPHIRE") && choixRessource.equals("EMERALD") && choixRessource.equals("RUBY") && choixRessource.equals("ONYX") ){
-                    Game.display.out.println("Veuiller choisir 3 types de ressource");
+            while (choixResources.size() < 3) { 
+                Game.display.out.println("Veuillez entrer une ressource en utilisant sa première lettre :");
+                Game.display.out.println("D pour DIAMOND, S pour SAPPHIRE, E pour EMERALD, O pour ONYX, R pour RUBY");
+        
+                String choixRessource = scanner.nextLine().toUpperCase();
+        
+                Resource ressource = null;
+                if (choixRessource.equals("D")) {
+                    ressource = Resource.valueOf("DIAMOND");
+                } else if (choixRessource.equals("S")) {
+                    ressource = Resource.valueOf("SAPPHIRE");
+                } else if (choixRessource.equals("E")) {
+                    ressource = Resource.valueOf("EMERALD");
+                } else if (choixRessource.equals("O")) {
+                    ressource = Resource.valueOf("ONYX");
+                } else if (choixRessource.equals("R")) {
+                    ressource = Resource.valueOf("RUBY");
                 }
-                choixResources.add(Resource.valueOf(choixRessource));
+        
+                if (ressource != null) {
+                    if (!choixResources.contains(ressource)) {
+                        choixResources.add(ressource);
+                        Game.display.out.println("Vous avez sélectionné : " + ressource);
+                    } else {
+                        Game.display.out.println("Cette ressource a déjà été sélectionnée. Veuillez en choisir une autre.");
+                    }
+                } else {
+                    Game.display.out.println("Entrée invalide. Veuillez entrer une lettre correspondant à une ressource valide.");
+                }
             }
+            
             result = new PickDiffTokensAction(choixResources);
         }
         
-        if(choix==3){
-            Game.display.out.println("Veuiller choisir une carte à acheter sur le plateau :");
-            scanner.nextLine();
-            int positionX = scanner.nextInt(); 
-            scanner.nextLine();
-            int positionY = scanner.nextInt();
-            result = new BuyCardAction(board.getCard(positionX, positionY));
-            
+        if (choix == 3) {
+            boolean positionValide = false;
+            int positionX = -1;
+            int positionY = -1;
+        
+            while (!positionValide) {
+                Game.display.out.println("Veuillez choisir une carte à acheter sur le plateau :");
+                Game.display.out.println("Entrez les coordonnées de la carte (ligne et colonne).");
+        
+                if (scanner.hasNextInt()) {
+                    positionX = scanner.nextInt();
+                    if (scanner.hasNextInt()) {
+                        positionY = scanner.nextInt();
+                        scanner.nextLine();
+                        if (board.getCard(positionX, positionY) != null) {
+                            result = new BuyCardAction(board.getCard(positionX, positionY));
+                            positionValide = true;
+                        } else {
+                            Game.display.out.println("Aucune carte n'existe à cette position. Réessayez.");
+                        }
+                    } else {
+                        Game.display.out.println("Veuillez entrer un entier pour la colonne.");
+                        scanner.nextLine();
+                    }
+                } else {
+                    Game.display.out.println("Veuillez entrer un entier pour la ligne.");
+                    scanner.nextLine(); 
+                }
+            }
         }
         
         if(choix==4) {
