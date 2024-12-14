@@ -112,11 +112,11 @@ public class HumanPlayer extends Player
                     Game.display.out.println("Veuillez choisir une carte à acheter sur le plateau :");
                     Game.display.out.println("Entrez les coordonnées de la carte (ligne et colonne).");
                     
-                    Game.display.out.println("Entrez la ligne de la carte.");
-                    positionX = scanner.nextInt();
+                    Game.display.out.println("Entrez la ligne de la carte (Entre 1 et 3 inclus).");
+                    positionX = scanner.nextInt()-1;
                     scanner.nextLine();
-                    Game.display.out.println("Entrez la colonne de la carte.");
-                    positionY = scanner.nextInt();
+                    Game.display.out.println("Entrez la colonne de la carte (Entre 1 et 4 inclus).");
+                    positionY = scanner.nextInt()-1;
                     scanner.nextLine();
                     if (positionX < 1 || positionX > 3 || positionY < 1 || positionY > 3) {
                         Game.display.out.println("Aucune carte n'existe à cette position. Réessayez.");
