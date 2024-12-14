@@ -20,6 +20,7 @@ public class HumanPlayer extends Player
         //Choix que peut faire le joueur
         while (choix!=1 && choix!=2 && choix!=3 && choix!=4) {
             Game.display.out.println("Choisir un chiffre entre 1 et 4");
+            scanner.nextLine();
             choix=scanner.nextInt();
         }
         
@@ -30,6 +31,7 @@ public class HumanPlayer extends Player
             Game.display.out.println("Entrer E pour prendre 2 EMERALD");
             Game.display.out.println("Entrer O pour prendre 2 ONYX");
             Game.display.out.println("Entrer R pour prendre 2 RUBY");
+            scanner.nextLine();
             String choixRessource = scanner.nextLine();
             
             if(choixRessource.equals("D")){
@@ -54,6 +56,7 @@ public class HumanPlayer extends Player
             ArrayList<Resource> choixResources = new ArrayList<Resource>();
             while (choixResources.size() < 4) { 
                 Game.display.out.println("Veuiller entrer 3 types de ressource :");
+                scanner.nextLine();
                 String choixRessource=scanner.nextLine();
                 while(choixRessource.equals("DIAMOND") && choixRessource.equals("SAPHIRE") && choixRessource.equals("EMERALD") && choixRessource.equals("RUBY") && choixRessource.equals("ONYX") ){
                     Game.display.out.println("Veuiller choisir 3 types de ressource");
@@ -65,7 +68,9 @@ public class HumanPlayer extends Player
         
         if(choix==3){
             Game.display.out.println("Veuiller choisir une carte à acheter sur le plateau :");
+            scanner.nextLine();
             int positionX = scanner.nextInt(); 
+            scanner.nextLine();
             int positionY = scanner.nextInt();
             result = new BuyCardAction(board.getCard(positionX, positionY));
             
