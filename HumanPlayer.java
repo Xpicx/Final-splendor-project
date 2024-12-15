@@ -48,32 +48,27 @@ public class HumanPlayer extends Player
                 if(choixRessource.equals("D")) {
                     result = new PickSameTokensAction(Resource.valueOf("DIAMOND"));
                     choixFait = true;
-                    Game.display.out.println(result.toString());
                 }
                 else if(choixRessource.equals("S")) {
                     result = new PickSameTokensAction(Resource.valueOf("SAPPHIRE"));
                     choixFait = true;
-                    Game.display.out.println(result.toString());
                 }
                 else if(choixRessource.equals("E")) {
                     result = new PickSameTokensAction(Resource.valueOf("EMERALD"));
                     choixFait = true;
-                    Game.display.out.println(result.toString());
                 }
                 else if(choixRessource.equals("O")) {
                     result = new PickSameTokensAction(Resource.valueOf("ONYX"));
                     choixFait = true;
-                    Game.display.out.println(result.toString());
                 }
                 else if(choixRessource.equals("R")) {
                     result = new PickSameTokensAction(Resource.valueOf("RUBY"));
                     choixFait = true;
-                    Game.display.out.println(result.toString());
                 }else {
                     Game.display.out.println("Entrée invalide. Veuillez entrer une lettre valide.");
                 }
             }
-
+            Game.display.out.println(result.toString());
         }
 
         if (choix==2) {
