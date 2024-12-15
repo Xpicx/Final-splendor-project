@@ -114,7 +114,7 @@ public class Game {
             }
         }
         if(gagnants.size()==1){
-            Game.display.out.println(gagnants.get(0));
+            Game.display.out.println(gagnants.get(0).getName());
         }else{
             String gagnant="";
             for(int i=1; i<gagnants.size();i++){

@@ -36,7 +36,7 @@ public class DumbRobotPlayer extends Player
     }
     
     public Resources chooseDiscardingTokens(){
-        Resources tokensToDiscard = null;
+        Resources tokensToDiscard = new Resources();
         while(super.getNbTokens()> 10){
             Random random = new Random();
             int rdm = random.nextInt(5);

@@ -123,7 +123,7 @@ public class Board implements Displayable {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 4; j++) {
                 if (visibleCards[i][j].equals(card)) {
-                    if (stackCards.get(card.getNiveau()).isEmpty()) {
+                    if (stackCards.get(card.getNiveau()-1).isEmpty()) {
                         visibleCards[i][j] = null;
                     } else if (!(stackCards.get(card.getNiveau()).isEmpty())) {
                         result = visibleCards[i][j];
