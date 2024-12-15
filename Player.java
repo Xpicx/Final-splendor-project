@@ -45,15 +45,18 @@ public abstract class Player implements Displayable {
         
         return strPlayer;
     }
-    
+
+    //Renvoie le nom du joueur
     public String getName(){
         return name;
     }
-    
+
+    //Renvoie les points du joueur
     public int getPoints(){
         return points;
     }
-    
+
+    //Renvoie le nombre total de jetons que le joueur possède
     public int getNbTokens(){
         int res = 0;
         res += resources.getNbResource(Resource.DIAMOND);
@@ -64,19 +67,23 @@ public abstract class Player implements Displayable {
         return res;
         
     }
-    
+
+    //Renvoie le nombre de cartes achetées par le joueur
     public int getNbPurchasedCards(){
         return purchasedCards.size();
     }
-    
+
+    //Renvoie le nombre de ressources achetées pour un type donné
     public int getNbResource(Resource resource){
         return resources.getNbResource(resource);
     }
-    
+
+    //Renvoie la liste des ressources disponibles
     public Resources getAvailableResources(){
         return resources;
     }
-    
+
+   //Renvoie les ressources bonus
     public Resources getResourceBonus() {
         Resources resourcesBonus = new Resources();
         for (DevCard card : purchasedCards) {
@@ -84,7 +91,9 @@ public abstract class Player implements Displayable {
         }
         return resourcesBonus;
     }
-    
+
+
+    //Renvoie le nombre de ressources d’un type donné présents sur les cartes achetées
     public int getResFromCards(Resource type){
         int res = 0;
         for(int i = 0; i < purchasedCards.size(); i++){
@@ -96,19 +105,23 @@ public abstract class Player implements Displayable {
         }
         return res;
     }
-    
+
+    //Prend en paramètre un type de ressource et une quantité (v), et qui ajoute (v>0) ou supprime (v<0) cette quantité à la ressource correspondante. Le nombre de ressources disponibles pour chaque type ne pourra pas être inférieur à 0.
     public void updateNbResource(Resource type, int i){
         resources.updateNbResource(type, i);
     }
-    
+
+    //Incrémente le nombre de points prestige acquis par le joueur.
     public void updatePoints(int v){
         points += v;
     }
-    
+
+    //Permet d’ajouter une carte donnée à la liste des cartes achetées par le joueur.
     public void addPurchasedCard(DevCard card){
         purchasedCards.add(card);
     }
-    
+
+    //Vérifie si le joueur a assez de ressources pour acheter une carte donnée
     public Boolean canBuyCard(DevCard card){
         Resources resourcesBonus = getResourceBonus();
         if(card.getCost().getNbResource(Resource.DIAMOND) - resourcesBonus.getNbResource(Resource.DIAMOND) <= resources.getNbResource(Resource.DIAMOND) &&
