@@ -37,12 +37,14 @@ public class Game {
         if (nbOfPlayers<2 || nbOfPlayers>4){
             throw new IllegalArgumentException("Le nombre de joueur doit être entre 2 et 4");
         }
+        
         Game.display.out.println("Entrez votre nom : ");
         Scanner scanner =new Scanner(Game.display.in);
         String name =scanner.nextLine();
         HumanPlayer human=new HumanPlayer(1,name);
         players.add(human);
-        //Créer un nombre n de robot en fonction du nombre de joueur
+        
+        //Créer un nombre n-1 de robot en fonction du nombre de joueur
         for (int i = 0; i < nbOfPlayers-1; i++){
             DumbRobotPlayer robot=new DumbRobotPlayer(i,"Robot"+i); 
             players.add(robot);
@@ -51,6 +53,7 @@ public class Game {
         play();
     }
 
+    //Retourne le nombre de joueur
     public int getNbPlayers(){
         return players.size();
     }
@@ -72,6 +75,7 @@ public class Game {
         display.outBoard.println(String.join("\n", mainDisplay));
     }
 
+    //Joue tant que la partie n'est pas finie 
     public void play(){
         while(!isGameOver()){
             for (Player player : players) {
@@ -85,17 +89,20 @@ public class Game {
         gameOver();
     }
 
+    //Fait l'action
     private void move(Player player){
         Action action=player.chooseAction(board);
         action.process(player,board);
     }
 
+    //Appel la méthode qui retire les jetons en trop
     private void discardToken(Player player){
         Resources r=player.chooseDiscardingTokens();
         DiscardTokensAction discard=new DiscardTokensAction(r);
         discard.process(player,board);
     }
 
+    //Renvoie true si un joueur a 15 points ou plus
     public boolean isGameOver(){
         for(int i=0; i<players.size();i++){
             if(players.get(i).getPoints()>=1){
@@ -105,6 +112,7 @@ public class Game {
         return false;
     }
 
+    //Affiche bravo avec le nom du joueur qui a gagné
     private void gameOver(){
         Game.display.out.println("Bravo!");
         ArrayList<Player> gagnants=new ArrayList<Player>();
