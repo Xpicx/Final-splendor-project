@@ -88,7 +88,7 @@ public class Game {
     }
 
     private void discardToken(Player player){
-        Resources r=new Resources();
+        Resources r=player.chooseDiscardingTokens();
         DiscardTokensAction discard=new DiscardTokensAction(r);
         discard.process(player,board);
     }
