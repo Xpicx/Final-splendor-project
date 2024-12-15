@@ -10,11 +10,13 @@ import java.util.Collections;
 import java.util.Random;
 
 public class Board implements Displayable {
-    private DevCard[][] visibleCards;
-    private ArrayList<Stack<DevCard>> stackCards;
-    private Resources resourcesOnBoard;
-    private ArrayList<DevCard> pileCartes;
-    
+    private DevCard[][] visibleCards; //plateau de jeu
+    private ArrayList<Stack<DevCard>> stackCards; //liste des 3 piles de cartes
+    private Resources resourcesOnBoard; //jetons ressources disponibles sur le plateau
+
+    /**
+     * Constructeur de la classe Board.
+     */
     public Board(int nbPlayer) {
         //initialisation de la liste contenant les piles de cartes
         stackCards = new ArrayList<Stack<DevCard>>();
@@ -34,7 +36,7 @@ public class Board implements Displayable {
         }
         
         //lecture du fichier stat.csv
-        pileCartes=new ArrayList<DevCard>();
+        ArrayList<DevCard> pileCartes = new ArrayList<DevCard>();
         try {
         Scanner sc=new Scanner(new File("stats.csv"));
         String ligneFichier=sc.nextLine();
@@ -80,6 +82,9 @@ public class Board implements Displayable {
             }
         }
     }
+    /**
+     * Renvoie les jetons ressources présents sur le plateau.
+     */
     public Resources getResourcesOnBoard(){
         return resourcesOnBoard;
     }
@@ -110,7 +115,9 @@ public class Board implements Displayable {
     public ArrayList<Resource> getAvailableResources() {
         return resourcesOnBoard.getAvailableResources();
     }
-    
+    /**
+     * Renvoie la carte à la position i, j du plateau.
+     */
     public DevCard getCard(int i, int j) {
         return visibleCards[i][j];
     }
