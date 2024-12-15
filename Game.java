@@ -27,7 +27,7 @@ public class Game {
         display.outBoard.println("Bienvenue sur Splendor !");
         Game game = new Game(2);
         game.play();
-        display.close();
+        //display.close();
     }
 
     public Game(int nbOfPlayers) throws IllegalArgumentException{
@@ -103,25 +103,25 @@ public class Game {
     }
 
     private void gameOver(){
-        System.out.println("Bravo!");
-        ArrayList<String> gagnants=new ArrayList<String>();
+        Game.display.out.println("Bravo!");
+        ArrayList<Player> gagnants=new ArrayList<Player>();
         for(int i=0; i<players.size();i++){
-            if(players.get(i).getPoints()>=15){
-                gagnants.add(players.get(i).getName());
+            if(players.get(i).getPoints()>=1){
+                gagnants.add(players.get(i));
             }
         }
-        if(gagnants.size()>1){
-            System.out.println(gagnants.get(0));
+        if(gagnants.size()==15){
+            Game.display.out.println(gagnants.get(0));
         }else{
             String gagnant="";
             for(int i=1; i<gagnants.size();i++){
-                if(players.get(i).getNbPurchasedCards()<players.get(i-1).getNbPurchasedCards()){
-                    gagnant=gagnants.get(i);
+                if(gagnants.get(i).getNbPurchasedCards()<gagnants.get(i-1).getNbPurchasedCards()){
+                    gagnant=gagnants.get(i).getName();
                 }else{
-                    gagnant=gagnants.get(i-1);
+                    gagnant=gagnants.get(i-1).getName();
                 }
             }
-            System.out.println(gagnant);
+            Game.display.out.println(gagnant);
         }
 
     }
