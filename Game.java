@@ -37,7 +37,10 @@ public class Game {
         if (nbOfPlayers<2 || nbOfPlayers>4){
             throw new IllegalArgumentException("Le nombre de joueur doit être entre 2 et 4");
         }
-        HumanPlayer human=new HumanPlayer(1,"Humain");
+        Game.display.out.println("Entrer votre nom");
+        Scanner scanner =new Scanner(Game.display.in);
+        String name =scanner.nextLine();
+        HumanPlayer human=new HumanPlayer(1,name);
         players.add(human);
         //Créer un nombre n de robot en fonction du nombre de joueur
         for (int i = 0; i < nbOfPlayers-1; i++){
@@ -106,11 +109,11 @@ public class Game {
         Game.display.out.println("Bravo!");
         ArrayList<Player> gagnants=new ArrayList<Player>();
         for(int i=0; i<players.size();i++){
-            if(players.get(i).getPoints()>=1){
+            if(players.get(i).getPoints()>=15){
                 gagnants.add(players.get(i));
             }
         }
-        if(gagnants.size()==15){
+        if(gagnants.size()==1){
             Game.display.out.println(gagnants.get(0));
         }else{
             String gagnant="";
