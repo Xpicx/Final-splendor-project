@@ -151,7 +151,7 @@ public class HumanPlayer extends Player
     }
 
     public Resources chooseDiscardingTokens(){
-        Scanner scanner=new Scanner(System.in);
+        Scanner scanner=new Scanner(Game.display.in);
         Resources tokensToDiscard = null;
         while (super.getNbTokens()> 10) { 
             Game.display.out.println("Veuiller choisir un jeton à retirer: ");

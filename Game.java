@@ -37,7 +37,7 @@ public class Game {
         if (nbOfPlayers<2 || nbOfPlayers>4){
             throw new IllegalArgumentException("Le nombre de joueur doit être entre 2 et 4");
         }
-        Game.display.out.println("Entrer votre nom");
+        Game.display.out.println("Entrez votre nom : ");
         Scanner scanner =new Scanner(Game.display.in);
         String name =scanner.nextLine();
         HumanPlayer human=new HumanPlayer(1,name);
@@ -98,7 +98,7 @@ public class Game {
 
     public boolean isGameOver(){
         for(int i=0; i<players.size();i++){
-            if(players.get(i).getPoints()>=15){
+            if(players.get(i).getPoints()>=1){
                 return true;
             }
         }
@@ -109,7 +109,7 @@ public class Game {
         Game.display.out.println("Bravo!");
         ArrayList<Player> gagnants=new ArrayList<Player>();
         for(int i=0; i<players.size();i++){
-            if(players.get(i).getPoints()>=15){
+            if(players.get(i).getPoints()>=1){
                 gagnants.add(players.get(i));
             }
         }
