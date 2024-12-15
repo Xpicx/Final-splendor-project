@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 
 public class HumanPlayer extends Player
 {
@@ -17,14 +18,21 @@ public class HumanPlayer extends Player
         Game.display.out.println("Entrer 3 pour: Acheter une carte développement");
         Game.display.out.println("Entrer 4 pour: Passer votre tour");
         Scanner scanner = new Scanner(Game.display.in);
-        int choix = scanner.nextInt(); //Lecture entrée clavier
-        scanner.nextLine();
+        int choix = -1; //Lecture entrée clavier
 
         //Choix que peut faire le joueur
         while (choix < 1 || choix > 4) {
-            Game.display.out.println("Choisir un chiffre entre 1 et 4");
-            choix = scanner.nextInt();
-            scanner.nextLine();
+            try {
+                Game.display.out.println("Veuillez choisir une action (1 à 4) :");
+                choix = scanner.nextInt();
+                scanner.nextLine();
+                if (choix < 1 || choix > 4) {
+                    Game.display.out.println("Erreur : le nombre doit être entre 1 et 4.");
+                }
+            } catch (InputMismatchException e) {
+                Game.display.out.println("Erreur : veuillez entrer un entier valide.");
+                scanner.nextLine(); 
+            }
         }
 
         if (choix == 1) {
@@ -33,12 +41,8 @@ public class HumanPlayer extends Player
 
             while (!choixFait) {
                 Game.display.out.println("Veuillez entrer un type de ressource :");
-                Game.display.out.println("Entrez D pour prendre 2 DIAMOND");
-                Game.display.out.println("Entrez S pour prendre 2 SAPPHIRE");
-                Game.display.out.println("Entrez E pour prendre 2 EMERALD");
-                Game.display.out.println("Entrez O pour prendre 2 ONYX");
-                Game.display.out.println("Entrez R pour prendre 2 RUBY");
-
+                Game.display.out.println("D pour DIAMOND, S pour SAPPHIRE, E pour EMERALD, O pour ONYX, R pour RUBY");
+                
                 choixRessource = scanner.nextLine();
 
                 if(choixRessource.equals("D")) {
@@ -109,27 +113,32 @@ public class HumanPlayer extends Player
             int positionY = -1;
 
             while (!positionValide) {
-                Game.display.out.println("Veuillez choisir une carte à acheter sur le plateau :");
-                Game.display.out.println("Entrez les coordonnées de la carte (ligne et colonne).");
-
-                Game.display.out.println("Entrez la ligne de la carte (Entre 1 et 3 inclus).");
-                positionX = scanner.nextInt()-1;
-                scanner.nextLine();
-                Game.display.out.println("Entrez la colonne de la carte (Entre 1 et 4 inclus).");
-                positionY = scanner.nextInt()-1;
-                scanner.nextLine();
-                if (positionX < 1 || positionX > 3 || positionY < 1 || positionY > 3) {
-                    Game.display.out.println("Aucune carte n'existe à cette position. Réessayez.");
-                } else {
-                    if (board.getCard(positionX, positionY) != null && canBuyCard(board.getCard(positionX, positionY))) {
-                        result = new BuyCardAction(board.getCard(positionX, positionY));
-                        positionValide = true;
-                    } else if (!canBuyCard(board.getCard(positionX, positionY))) {
-                        Game.display.out.println("Vous n'avez pas assez de ressources pour acheter cette carte.");
+                try {
+                    Game.display.out.println("Veuillez choisir une carte à acheter sur le plateau :");
+                    Game.display.out.println("Entrez les coordonnées de la carte (ligne et colonne).");
+    
+                    Game.display.out.println("Entrez la ligne de la carte (Entre 1 et 3 inclus).");
+                    positionX = scanner.nextInt()-1;
+                    scanner.nextLine();
+                    Game.display.out.println("Entrez la colonne de la carte (Entre 1 et 4 inclus).");
+                    positionY = scanner.nextInt()-1;
+                    scanner.nextLine();
+                    
+                    if (positionX < 1 || positionX > 3 || positionY < 1 || positionY > 3) {
+                        Game.display.out.println("Aucune carte n'existe à cette position. Réessayez.");
+                    } else {
+                        if (board.getCard(positionX, positionY) != null && canBuyCard(board.getCard(positionX, positionY))) {
+                            result = new BuyCardAction(board.getCard(positionX, positionY));
+                            positionValide = true;
+                        } else if (!canBuyCard(board.getCard(positionX, positionY))) {
+                            Game.display.out.println("Vous n'avez pas assez de ressources pour acheter cette carte.");
+                        }
                     }
+                } catch (InputMismatchException e) {
+                    Game.display.out.println("Erreur : veuillez entrer un nombre valide.");
+                    scanner.nextLine();
                 }
             }
-
         }
 
         if(choix==4) {
