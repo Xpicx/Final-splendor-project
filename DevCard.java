@@ -34,7 +34,7 @@ public class DevCard implements Displayable {
     }
 
     /**
-     * Renvoie type de la carte (la ressource 
+     * Renvoie type de la carte (la ressource auquel sera appliqué une réduction).
      */
     
     public Resource getResourceType(){

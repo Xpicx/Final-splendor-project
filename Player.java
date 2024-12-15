@@ -77,6 +77,14 @@ public abstract class Player implements Displayable {
         return resources;
     }
     
+    public Resources getResourceBonus() {
+        Resources resourcesBonus = new Resources();
+        for (DevCard card : purchasedCards) {
+            resourcesBonus.updateNbResource(card.getResourceType(), 1);
+        }
+        return resourcesBonus;
+    }
+    
     public int getResFromCards(Resource type){
         int res = 0;
         for(int i = 0; i < purchasedCards.size(); i++){
@@ -102,11 +110,12 @@ public abstract class Player implements Displayable {
     }
     
     public Boolean canBuyCard(DevCard card){
-        if(card.getCost().getNbResource(Resource.DIAMOND) <= resources.getNbResource(Resource.DIAMOND) &&
-        card.getCost().getNbResource(Resource.SAPPHIRE) <= resources.getNbResource(Resource.SAPPHIRE) &&
-        card.getCost().getNbResource(Resource.EMERALD) <= resources.getNbResource(Resource.EMERALD) &&
-        card.getCost().getNbResource(Resource.ONYX) <= resources.getNbResource(Resource.ONYX) &&
-        card.getCost().getNbResource(Resource.RUBY) <= resources.getNbResource(Resource.RUBY)){
+        Resources resourcesBonus = getResourceBonus();
+        if(card.getCost().getNbResource(Resource.DIAMOND) - resourcesBonus.getNbResource(Resource.DIAMOND) <= resources.getNbResource(Resource.DIAMOND) &&
+        card.getCost().getNbResource(Resource.SAPPHIRE) - resourcesBonus.getNbResource(Resource.SAPPHIRE) <= resources.getNbResource(Resource.SAPPHIRE) &&
+        card.getCost().getNbResource(Resource.EMERALD) - resourcesBonus.getNbResource(Resource.EMERALD) <= resources.getNbResource(Resource.EMERALD) &&
+        card.getCost().getNbResource(Resource.ONYX) - resourcesBonus.getNbResource(Resource.ONYX) <= resources.getNbResource(Resource.ONYX) &&
+        card.getCost().getNbResource(Resource.RUBY) - resourcesBonus.getNbResource(Resource.RUBY) <= resources.getNbResource(Resource.RUBY)){
             return true;
         }
         else{

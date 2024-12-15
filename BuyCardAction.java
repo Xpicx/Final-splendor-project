@@ -11,8 +11,8 @@ public class BuyCardAction implements Action
         plateau.updateCard(carte);
         joueur.addPurchasedCard(carte);
         for (Resource resource : Resource.values()) {
-            joueur.updateNbResource(resource, -carte.getCost().getNbResource(resource));
-            plateau.updateNbResource(resource, carte.getCost().getNbResource(resource));
+            joueur.updateNbResource(resource, -carte.getCost().getNbResource(resource) + joueur.getResourceBonus().getNbResource(resource));
+            plateau.updateNbResource(resource, carte.getCost().getNbResource(resource) - joueur.getResourceBonus().getNbResource(resource));
         }
         joueur.updatePoints(carte.getPoints());
     }
