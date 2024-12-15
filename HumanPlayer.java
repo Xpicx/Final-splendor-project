@@ -48,22 +48,27 @@ public class HumanPlayer extends Player
                 if(choixRessource.equals("D")) {
                     result = new PickSameTokensAction(Resource.valueOf("DIAMOND"));
                     choixFait = true;
+                    Game.display.out.println(result.toString());
                 }
                 else if(choixRessource.equals("S")) {
                     result = new PickSameTokensAction(Resource.valueOf("SAPPHIRE"));
                     choixFait = true;
+                    Game.display.out.println(result.toString());
                 }
                 else if(choixRessource.equals("E")) {
                     result = new PickSameTokensAction(Resource.valueOf("EMERALD"));
                     choixFait = true;
+                    Game.display.out.println(result.toString());
                 }
                 else if(choixRessource.equals("O")) {
                     result = new PickSameTokensAction(Resource.valueOf("ONYX"));
                     choixFait = true;
+                    Game.display.out.println(result.toString());
                 }
                 else if(choixRessource.equals("R")) {
                     result = new PickSameTokensAction(Resource.valueOf("RUBY"));
                     choixFait = true;
+                    Game.display.out.println(result.toString());
                 }else {
                     Game.display.out.println("Entrée invalide. Veuillez entrer une lettre valide.");
                 }
@@ -104,7 +109,7 @@ public class HumanPlayer extends Player
                 }
             }
             result = new PickDiffTokensAction(choixResources);
-
+            Game.display.out.println(result.toString());
         }
 
         if (choix == 3) {
@@ -130,6 +135,7 @@ public class HumanPlayer extends Player
                         if (board.getCard(positionX, positionY) != null && canBuyCard(board.getCard(positionX, positionY))) {
                             result = new BuyCardAction(board.getCard(positionX, positionY));
                             positionValide = true;
+                            Game.display.out.println(result.toString());
                         } else if (!canBuyCard(board.getCard(positionX, positionY))) {
                             Game.display.out.println("Vous n'avez pas assez de ressources pour acheter cette carte.");
                         }
@@ -143,6 +149,7 @@ public class HumanPlayer extends Player
 
         if(choix==4) {
             result = new PassAction();
+            Game.display.out.println(result.toString());
         }
 
         return result;
