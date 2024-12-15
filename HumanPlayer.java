@@ -124,7 +124,7 @@ public class HumanPlayer extends Player
                     positionY = scanner.nextInt()-1;
                     scanner.nextLine();
                     
-                    if (positionX < 1 || positionX > 3 || positionY < 1 || positionY > 3) {
+                    if (positionX < 0 || positionX > 3 || positionY < 0 || positionY > 4) {
                         Game.display.out.println("Aucune carte n'existe à cette position. Réessayez.");
                     } else {
                         if (board.getCard(positionX, positionY) != null && canBuyCard(board.getCard(positionX, positionY))) {

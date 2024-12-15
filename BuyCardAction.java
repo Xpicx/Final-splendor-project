@@ -14,7 +14,7 @@ public class BuyCardAction implements Action
             joueur.updateNbResource(resource, -carte.getCost().getNbResource(resource));
             plateau.updateNbResource(resource, carte.getCost().getNbResource(resource));
         }
-        
+        joueur.updatePoints(carte.getPoints());
     }
     
     public String toString(){
