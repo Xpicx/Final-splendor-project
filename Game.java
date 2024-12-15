@@ -1,3 +1,9 @@
+/*
+ * @author    Corentin Dufourg
+ * @version     1.1
+ * @since       1.0
+ */
+
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;

@@ -8,7 +8,9 @@ public class HumanPlayer extends Player
     }
 
     public Action chooseAction(Board board){
+
         Action result = null;
+
         Game.display.out.println("Veuillez choisir une action: ");
         Game.display.out.println("Entrer 1 pour: Prendre deux jetons de la même ressource");
         Game.display.out.println("Entrer 2 pour: Prendre trois jetons de ressources différentes");
@@ -38,7 +40,6 @@ public class HumanPlayer extends Player
                 Game.display.out.println("Entrez R pour prendre 2 RUBY");
 
                 choixRessource = scanner.nextLine();
-                scanner.nextLine();
 
                 if(choixRessource.equals("D")) {
                     result = new PickSameTokensAction(Resource.valueOf("DIAMOND"));
@@ -63,6 +64,7 @@ public class HumanPlayer extends Player
                     Game.display.out.println("Entrée invalide. Veuillez entrer une lettre valide.");
                 }
             }
+
         }
 
         if (choix==2) {
@@ -98,6 +100,7 @@ public class HumanPlayer extends Player
                 }
             }
             result = new PickDiffTokensAction(choixResources);
+
         }
 
         if (choix == 3) {
@@ -127,10 +130,12 @@ public class HumanPlayer extends Player
                 }
             }
 
-            if(choix==4) {
-                result = new PassAction();
-            }
         }
+
+        if(choix==4) {
+            result = new PassAction();
+        }
+
         return result;
     }
 
