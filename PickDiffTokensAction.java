@@ -17,9 +17,9 @@ public class PickDiffTokensAction implements Action {
     }
     
     public String toString(){
-        String result = "Vous avez pris: 1 ";
+        String result = "Vous avez pris:";
         for (Resource resource : resourcesToTake) {
-            result += resource.toSymbol();
+            result += " 1 " + resource.toSymbol();
         }
         return result;
     }
