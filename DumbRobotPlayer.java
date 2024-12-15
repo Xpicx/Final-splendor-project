@@ -25,7 +25,7 @@ public class DumbRobotPlayer extends Player
         
         ArrayList<Resource> tokensToBuy = new ArrayList<Resource>();
         for (Resource resource : board.getAvailableResources()) {
-            if (board.getNbResource(resource) >= 4 && tokensToBuy.size() <= 3) {
+            if (tokensToBuy.size() <= 3) {
                 tokensToBuy.add(resource);
             }
             PickDiffTokensAction pdta = new PickDiffTokensAction(tokensToBuy);
