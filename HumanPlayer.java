@@ -40,7 +40,8 @@ public class HumanPlayer extends Player
                     Game.display.out.println("Entrez R pour prendre 2 RUBY");
     
                     choixRessource = scanner.nextLine();
-                
+                    scanner.nextLine();
+                    
                     if(choixRessource.equals("D")) {
                         result = new PickSameTokensAction(Resource.valueOf("DIAMOND"));
                         choixFait = true;
