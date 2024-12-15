@@ -6,7 +6,7 @@ public class HumanPlayer extends Player
     public HumanPlayer(int id, String name){
         super(id,name);
     }
-    
+
     public Action chooseAction(Board board){
         Action result = null;
         Game.display.out.println("Veuillez choisir une action: ");
@@ -17,18 +17,18 @@ public class HumanPlayer extends Player
         Scanner scanner = new Scanner(Game.display.in);
         int choix = scanner.nextInt(); //Lecture entrée clavier
         scanner.nextLine();
-        
+
         //Choix que peut faire le joueur
         while (choix < 1 || choix > 4) {
             Game.display.out.println("Choisir un chiffre entre 1 et 4");
             choix = scanner.nextInt();
             scanner.nextLine();
         }
-        
+
         if (choix == 1) {
             String choixRessource = "";
             boolean choixFait = false;
-            
+
             while (!choixFait) {
                 Game.display.out.println("Veuillez entrer un type de ressource :");
                 Game.display.out.println("Entrez D pour prendre 2 DIAMOND");
@@ -39,7 +39,7 @@ public class HumanPlayer extends Player
 
                 choixRessource = scanner.nextLine();
                 scanner.nextLine();
-                
+
                 if(choixRessource.equals("D")) {
                     result = new PickSameTokensAction(Resource.valueOf("DIAMOND"));
                     choixFait = true;
@@ -64,15 +64,15 @@ public class HumanPlayer extends Player
                 }
             }
         }
-           
+
         if (choix==2) {
             ArrayList<Resource> choixResources = new ArrayList<Resource>();
             while (choixResources.size() < 3) { 
                 Game.display.out.println("Veuillez entrer une ressource en utilisant sa première lettre :");
                 Game.display.out.println("D pour DIAMOND, S pour SAPPHIRE, E pour EMERALD, O pour ONYX, R pour RUBY");
-        
+
                 String choixRessource = scanner.nextLine().toUpperCase();
-        
+
                 Resource ressource = null;
                 if (choixRessource.equals("D")) {
                     ressource = Resource.valueOf("DIAMOND");
@@ -85,7 +85,7 @@ public class HumanPlayer extends Player
                 } else if (choixRessource.equals("R")) {
                     ressource = Resource.valueOf("RUBY");
                 }
-        
+
                 if (ressource != null) {
                     if (!choixResources.contains(ressource)) {
                         choixResources.add(ressource);
@@ -99,16 +99,16 @@ public class HumanPlayer extends Player
             }
             result = new PickDiffTokensAction(choixResources);
         }
-        
+
         if (choix == 3) {
             boolean positionValide = false;
             int positionX = -1;
             int positionY = -1;
-        
+
             while (!positionValide) {
                 Game.display.out.println("Veuillez choisir une carte à acheter sur le plateau :");
                 Game.display.out.println("Entrez les coordonnées de la carte (ligne et colonne).");
-                
+
                 Game.display.out.println("Entrez la ligne de la carte (Entre 1 et 3 inclus).");
                 positionX = scanner.nextInt()-1;
                 scanner.nextLine();
@@ -126,26 +126,25 @@ public class HumanPlayer extends Player
                     }
                 }
             }
-        }
-        
-        if(choix==4) {
-            result = new PassAction();
-        }
-    }
-    return result;
-}
 
-public Resources chooseDiscardingTokens(){
-    Scanner scanner=new Scanner(System.in);
-    Resources tokensToDiscard = null;
-    while (super.getNbTokens()> 10) { 
-        Game.display.out.println("Veuiller choisir un jeton à retirer: ");
-        String tokenToDiscard=scanner.nextLine();
-        while(tokenToDiscard.equals("DIAMOND") && tokenToDiscard.equals("SAPHIRE") && tokenToDiscard.equals("EMERALD") && tokenToDiscard.equals("RUBY") && tokenToDiscard.equals("ONYX") ){
-            Game.display.out.println("Veuiller choisir 3 types de ressource");
-            tokensToDiscard.updateNbResource(Resource.valueOf(tokenToDiscard), 1);
+            if(choix==4) {
+                result = new PassAction();
+            }
         }
+        return result;
     }
-    return tokensToDiscard;
+
+    public Resources chooseDiscardingTokens(){
+        Scanner scanner=new Scanner(System.in);
+        Resources tokensToDiscard = null;
+        while (super.getNbTokens()> 10) { 
+            Game.display.out.println("Veuiller choisir un jeton à retirer: ");
+            String tokenToDiscard=scanner.nextLine();
+            while(tokenToDiscard.equals("DIAMOND") && tokenToDiscard.equals("SAPHIRE") && tokenToDiscard.equals("EMERALD") && tokenToDiscard.equals("RUBY") && tokenToDiscard.equals("ONYX") ){
+                Game.display.out.println("Veuiller choisir 3 types de ressource");
+                tokensToDiscard.updateNbResource(Resource.valueOf(tokenToDiscard), 1);
+            }
+        }
+        return tokensToDiscard;
     }
 }
