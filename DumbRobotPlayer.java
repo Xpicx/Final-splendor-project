@@ -5,8 +5,11 @@ public class DumbRobotPlayer extends Player
     public DumbRobotPlayer(int id, String name){
         super(id,name);
     }
-    
+
+    //Retourne le type d’action choisi nous considérons qu’un joueur robot stupide essayera toujours d’effectuer dans cet ordre là les actions suivantes 
     public Action chooseAction(Board board){
+
+        //acheter une carte sur le plateau
         for(int i = 0; i < 3; i++){
             for(int j = 0; j < 4; j++){
                 if(canBuyCard(board.getCard(i, j))){
@@ -15,14 +18,18 @@ public class DumbRobotPlayer extends Player
                 }
             }
         }
-        
+
+
+        //acheter deux jetons ressources de même type
         for (Resource resource : board.getAvailableResources()) {
             if (board.getNbResource(resource) >= 4) {
                 PickSameTokensAction psta = new PickSameTokensAction(resource);
                 return psta;
             }
         }
-        
+
+
+        //acheter des jetons ressources de type différents
         ArrayList<Resource> tokensToBuy = new ArrayList<Resource>();
         for (Resource resource : board.getAvailableResources()) {
             if (tokensToBuy.size() <= 3) {
@@ -31,10 +38,14 @@ public class DumbRobotPlayer extends Player
             PickDiffTokensAction pdta = new PickDiffTokensAction(tokensToBuy);
             return pdta;
         }
+
+        //passer son tour
         PassAction pa = new PassAction();
         return pa;        
     }
-    
+
+
+    //jetons a retirer
     public Resources chooseDiscardingTokens(){
         Resources tokensToDiscard = new Resources();
         while(super.getNbTokens()> 10){
